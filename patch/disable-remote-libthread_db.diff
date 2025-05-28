@@ -1,0 +1,12 @@
+diff --git a/gdbserver/thread-db.cc b/gdbserver/thread-db.cc
+index 6e0e2228a5f..49faa7eff55 100644
+--- a/gdbserver/thread-db.cc
++++ b/gdbserver/thread-db.cc
+@@ -592,6 +592,7 @@ dladdr_to_soname (const void *addr)
+ static int
+ try_thread_db_load (const char *library)
+ {
++  return 0;
+   void *handle;
+ 
+   threads_debug_printf ("Trying host libthread_db library: %s.",

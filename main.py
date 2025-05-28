@@ -1,4 +1,5 @@
 """main"""
+
 import asyncio
 import os
 import shutil
@@ -10,6 +11,7 @@ ZIG_VERSION = "zig-x86_64-linux-0.15.0-dev.643+dc6ffc28b"
 GDB_VERSION = "gdb-12.1"
 
 BUILD_PATH = Path.cwd().joinpath("build-dir")
+BUILD_PATH.mkdir(exist_ok=True)
 
 GDB_SRC_PATH = BUILD_PATH.joinpath("gdb-src")
 ZIG_PATH = BUILD_PATH.joinpath("zig")
@@ -17,9 +19,7 @@ BUILD_RESULT_PATH = BUILD_PATH.joinpath("result")
 BUILD_RESULT_PATH.mkdir(exist_ok=True)
 
 
-async def run_cmd(
-    *cmd: str, env: Optional[dict[str, str]] = None, cwd: Optional[Path] = None
-) -> None:
+async def run_cmd(*cmd: str, env: Optional[dict[str, str]] = None, cwd: Optional[Path] = None) -> None:
     """异步运行命令"""
     print(f"run {cmd}")
     proc = await asyncio.create_subprocess_exec(*cmd, env=env, cwd=cwd)

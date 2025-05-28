@@ -43,3 +43,10 @@ ignore = [
     "T201", # 允许使用 print
 ]
 pydocstyle = { convention = 'numpy' }
+
+[tool.mypy]
+ignore_missing_imports = true
+strict = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+exclude = ["build-dir/*"]
